@@ -16,9 +16,9 @@ const panelSchema = z.object({
 });
 
 const EARTH_COORDINATES = {
-  x: 0,
-  y: 0,
-  z: 0
+  x: 1350,
+  y: 4562,
+  z: 9313
 };
 
 const MAX_CORE_HEAT = 1200;
@@ -52,7 +52,7 @@ export function PanelPage() {
   } = useForm<PanelFormData>({
     resolver: zodResolver(panelSchema),
     defaultValues: {
-      coordinates: { x: 1350, y: 4562, z: 9313 },
+      coordinates: { x: EARTH_COORDINATES.x, y: EARTH_COORDINATES.y, z: EARTH_COORDINATES.z },
       coreHeat: 450,
       detonationPressure: 1200
     }
@@ -64,16 +64,6 @@ export function PanelPage() {
     
     // Simulate system processing delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-
-    if (systemStatus === SystemState.SYSTEM_DESTROYED) {
-      navigate('/system-destroyed');
-      return;
-    }
-
-    if (systemStatus === SystemState.EARTH_DESTROYED) {
-      navigate('/earth-destroyed');
-      return;
-    }
 
     if (systemStatus === SystemState.FRESH) {
       setSystemStatus(SystemState.HEATING_UP);
@@ -89,6 +79,10 @@ export function PanelPage() {
             setSystemStatus(SystemState.READY_FOR_BLAST);
             setIsLoading(false);
           }
+          if (newTemp >= MAX_CORE_HEAT) {
+            navigate('/system-destroyed');
+            return -1;
+          }
           return newTemp;
         });
       }, 100);
@@ -99,8 +93,7 @@ export function PanelPage() {
     if (systemStatus === SystemState.READY_FOR_BLAST || systemStatus === SystemState.BLAST_OVER) {
       setSystemStatus(SystemState.BLASTING);
       await new Promise(resolve => setTimeout(resolve, 5000));
-      setIsLoading(false);
-
+      
       if (data.detonationPressure > MAX_DETONATION_PRESSURE) {
         navigate('/system-destroyed');
         return;
@@ -111,7 +104,8 @@ export function PanelPage() {
       }
       setSystemStatus(SystemState.BLAST_OVER);
       await new Promise(resolve => setTimeout(resolve, 3000));
-      setSystemStatus(SystemState.READY_FOR_BLAST);
+      setIsLoading(false);
+      setSystemStatus(SystemState.FRESH);
     }
     
     
@@ -205,7 +199,7 @@ export function PanelPage() {
                 <div className="group">
                   <div className="flex items-center justify-between mb-1">
                     <label htmlFor="coreHeat" className="text-sm font-mono text-blue-300 group-focus-within:text-blue-400 transition-colors">
-                      <h3>CORE HEAT TEMPERATURE (K)</h3>
+                      <h3>CORE TEMPERATURE (K)</h3>
                     </label>
                   </div>
                   <div className="relative">
@@ -320,13 +314,13 @@ export function PanelPage() {
         {(systemStatus === SystemState.READY_FOR_BLAST) && (
           <div className="mt-4 p-3 bg-red-900/30 border border-red-500/30 text-red-300 text-sm font-mono flex items-center justify-center animate-pulse">
             <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-            SYSTEM IS READY FOR GRATINATION
+            SYSTEM IS READY FOR GRAND GRATINATION
           </div>
         )}
         {(systemStatus === SystemState.BLASTING) && (
           <div className="mt-4 p-3 bg-red-900/30 border border-red-500/30 text-red-300 text-sm font-mono flex items-center justify-center animate-pulse">
             <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-            GRATINATING...
+            GRATINATION IN PROGRESS...
           </div>
         )}
         {(systemStatus === SystemState.BLAST_OVER) && (

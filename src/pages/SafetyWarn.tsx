@@ -34,7 +34,7 @@ export function SafetyWarn() {
           2. NEVER HEAT UP THE CHAMBER BEFORE INSERTING THE CHEESE. . . . .
         </p> 
         <p className="text-sm text-gray-300">
-          3. NEVER EXCEED THE MAXIMUM ALLOWED CHAMBER PRESSURE OF 5000 BAR.
+          3. NEVER EXCEED THE MAXIMUM ALLOWED CHAMBER PRESSURE OF 5000 GPa.
         </p>
         <p className="text-sm text-gray-300">
           4. NEVER EXCEED THE MAXIMUM ALLOWED CHEESE VELOCITY OF 10000 M/S.

@@ -5,6 +5,8 @@ import { LoginPage } from './pages/LoginPage';
 import { PanelPage } from './pages/PanelPage';
 import SafetyWarn from './pages/SafetyWarn';
 import AntennaWarn from './pages/AntennaWarn';
+import EarthDestroyed from './pages/EarthDestroyed';
+import SystemDestroyed from './pages/SystemDestroyed';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/warn" element={<SafetyWarn />} />
           <Route path="/panel" element={<PanelPage />} />
+          <Route path="/earth-destroyed" element={<EarthDestroyed />} />
+          <Route path="/system-destroyed" element={<SystemDestroyed />} />
         </Routes>
       </div>
     </Router>
