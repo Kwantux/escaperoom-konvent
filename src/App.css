@@ -40,3 +40,7 @@
 .read-the-docs {
   color: #888;
 }
+
+input {
+  @apply bg-gray-400 text-white rounded border border-gray-600;
+}

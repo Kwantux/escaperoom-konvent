@@ -223,7 +223,7 @@ export function LoginPage() {
                       boxShadow: errors.coordinates?.[axis as keyof typeof errors.coordinates] 
                         ? '0 0 15px rgba(239, 68, 68, 0.4)' 
                         : '0 0 15px rgba(96, 165, 250, 0.1)',
-                      textShadow: '0 0 8px rgba(96, 165, 250, 0.3)'
+                      textShadow: '0 0 8px rgba(96, 165, 250, 0.3)',
                     }}
                   />
                   <div className="absolute inset-0 border-t border-blue-400/10 pointer-events-none"></div>
@@ -278,9 +278,12 @@ export function LoginPage() {
           
           {/* Button content */}
           <span className={`relative z-10 flex items-center ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-200`}>
-            <span className="text-blue-100 group-hover:text-white transition-colors font-mono text-sm tracking-wider flex items-center">
+            <span className="text-white group-hover:text-white transition-colors font-mono text-sm tracking-wider flex items-center"
+              style={{
+                color: 'white'
+              }}>
               <span className="opacity-80 group-hover:opacity-100 transition-opacity">[</span>
-              <span className="mx-2 text-blue-50 group-hover:text-white transition-colors font-medium">
+              <span className="mx-2 text-white group-hover:text-white transition-colors font-medium">
                 INITIATE SYSTEM ACCESS
               </span>
               <span className="opacity-80 group-hover:opacity-100 transition-opacity">]</span>

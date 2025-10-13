@@ -47,6 +47,7 @@ export function AntennaWarn() {
         <button 
           className={`group relative w-full flex justify-center items-center py-3 px-6 overflow-hidden cursor-pointer`}
           style={{
+            color: 'white',
             background: 'linear-gradient(90deg, rgba(30, 58, 138, 0.4) 0%, rgba(76, 29, 149, 0.4) 100%)',
             boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)',
             border: '1px solid rgba(96, 165, 250, 0.3)',
@@ -56,7 +57,7 @@ export function AntennaWarn() {
             transition: 'all 0.3s ease',
           }}
           onClick={() => navigate('/login')}>
-          <h4 className="text-green-500">
+          <h4>
             I HAVE CONNECTED THE ANTENNA SAFELY ✓
           </h4>
         </button>

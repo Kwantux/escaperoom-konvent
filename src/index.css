@@ -124,3 +124,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+input {
+  @apply bg-gray-400 text-white rounded border border-gray-600;
+}
