@@ -1,10 +1,31 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BrieBlasterPage from '../components/BrieBlasterPage';
 
 
 export function AntennaWarn() {
   const navigate = useNavigate();
+
+  const [timer, setTimer] = useState(-1);
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  const buttonClickedHandler = () => {
+    if (buttonClicked && timer <= 0)
+      navigate('/login');
+    if (timer < 0) {
+      setTimer(20);
+    }
+    setButtonClicked(true);
+  };
   
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(timer => timer - 1);
+      if (timer == 0)
+        clearInterval(interval);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
 
     <BrieBlasterPage>
@@ -56,9 +77,11 @@ export function AntennaWarn() {
             overflow: 'hidden',
             transition: 'all 0.3s ease',
           }}
-          onClick={() => navigate('/login')}>
+          onClick={buttonClickedHandler}>
           <h4>
-            I HAVE CONNECTED THE ANTENNA SAFELY ✓
+            {(timer < 0 && !buttonClicked) && "I HAVE CONNECTED THE ANTENNA SAFELY ✓"}
+            {(timer > 0) && "YES I REALLY READ THIS ALL (" + timer + "s)"}
+            {(timer <= 0 && buttonClicked) && "YES I REALLY READ THIS ALL ✓"}
           </h4>
         </button>
         
