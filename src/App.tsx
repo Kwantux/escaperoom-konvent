@@ -1,6 +1,6 @@
 
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { PanelPage } from './pages/PanelPage';
 import SafetyWarn from './pages/SafetyWarn';
@@ -33,7 +33,7 @@ function App() {
       <div className="min-h-screen bg-gray-900 text-white">
         <PathRedirect />
         <Routes>
-          {/* <Route path="*" element={<Navigate to="/antenna" replace />} /> */}
+          <Route path="/" element={<Navigate to="/antenna" replace />} />
           <Route path="/antenna" element={<AntennaWarn />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/warn" element={<SafetyWarn />} />
