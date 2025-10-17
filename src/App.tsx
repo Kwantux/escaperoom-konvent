@@ -1,6 +1,6 @@
 
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { PanelPage } from './pages/PanelPage';
 import SafetyWarn from './pages/SafetyWarn';
