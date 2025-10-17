@@ -37,7 +37,6 @@ export function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [accessDenied, setAccessDenied] = useState(AccessState.FRESH);
   const terminalRef = useRef<HTMLDivElement>(null);
-  const [panelVisible, setPanelVisible] = useState(false);
   
   const {
     register,
@@ -65,7 +64,6 @@ export function LoginPage() {
       let isDeleting = false;
       let typingSpeed = 50;
       let deleteSpeed = 30;
-      let pauseEnd = 0;
       
       const type = () => {
         if (currentMessage == messages.length) return;
@@ -91,7 +89,6 @@ export function LoginPage() {
           currentMessage++;
           if (currentMessage === messages.length) {
             currentLine.textContent = "";
-            setPanelVisible(true);
             return; // Stop at the last message
           }
           // if (currentMessage < messages.length - 1) {
@@ -216,7 +213,7 @@ export function LoginPage() {
                     id={axis}
                     type="number"
                     step="0.1"
-                    {...register(`coordinates.${axis}` as const, { valueAsNumber: true })}
+                    {...register(`coordinates.${axis}` as 'coordinates.x' | 'coordinates.y' | 'coordinates.z', { valueAsNumber: true })}
                     className={`relative w-full px-4 py-3 bg-black/70 backdrop-blur-sm border ${errors.coordinates?.[axis as keyof typeof errors.coordinates] ? 'border-red-500/60' : 'border-blue-400/30'} text-blue-100 text-center font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200`}
                     placeholder="0.0"
                     style={{

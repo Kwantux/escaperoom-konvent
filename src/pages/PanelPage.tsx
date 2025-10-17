@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import BrieBlasterPage from '../components/BrieBlasterPage';
 
 const panelSchema = z.object({
@@ -37,18 +37,14 @@ enum SystemState {
 export function PanelPage() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const [isHeating, setIsHeating] = useState(false);
   const [systemStatus, setSystemStatus] = useState(SystemState.FRESH);
   const [currentTemperature, setCurrentTemperature] = useState(310);
   const [targetTemperature, setTargetTemperature] = useState(310);
-  const [targetPressure, setTargetPressure] = useState(1200);
   
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setError,
-    watch
   } = useForm<PanelFormData>({
     resolver: zodResolver(panelSchema),
     defaultValues: {
@@ -67,9 +63,8 @@ export function PanelPage() {
 
     if (systemStatus === SystemState.FRESH) {
       setSystemStatus(SystemState.HEATING_UP);
-      setIsHeating(true);
       setTargetTemperature(data.coreHeat);
-      setTargetPressure(data.detonationPressure);    
+    
           
       let temperatureInterval = setInterval(() => {
         setCurrentTemperature(current => {
