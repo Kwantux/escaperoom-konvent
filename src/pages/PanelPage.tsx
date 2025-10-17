@@ -80,7 +80,7 @@ export function PanelPage() {
           }
           return newTemp;
         });
-      }, 100);
+      }, 30);
 
       return () => clearInterval(temperatureInterval);
     }
