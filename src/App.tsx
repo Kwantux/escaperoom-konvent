@@ -21,7 +21,7 @@ function PathRedirect() {
       window.history.replaceState(null, '', path);
       navigate(path);
     }
-    else {
+    else if (window.location.pathname === '/') {
       navigate('/antenna');
     }
   }, [navigate]);
