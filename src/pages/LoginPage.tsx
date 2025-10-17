@@ -8,9 +8,9 @@ import BrieBlasterPage from '../components/BrieBlasterPage';
 const CORRECT_DATA = {
   password: "geheim",
   coordinates: {
-    x: 13504,
-    y: 54562,
-    z: 93131
+    x: 42531,
+    y: 78945,
+    z: 56478
   }
 };
 
