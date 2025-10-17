@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 import BrieBlasterPage from '../components/BrieBlasterPage';
 
 const CORRECT_DATA = {
-  password: "brie",
+  password: "geheim",
   coordinates: {
-    x: 1,
-    y: 2,
-    z: 3
+    x: 13504,
+    y: 54562,
+    z: 93131
   }
 };
 
