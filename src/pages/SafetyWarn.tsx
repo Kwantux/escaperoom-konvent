@@ -27,7 +27,7 @@ export function SafetyWarn() {
           FOLLOW THESE RULES STRICTLY:
         </h2>
         <p className="text-sm text-gray-300">
-          1. NEVER EXCEED THE MAXIMUM ALLOWED CHEESE TEMPERATURE OF 1200°C.
+          1. NEVER EXCEED THE MAXIMUM ALLOWED CHEESE TEMPERATURE OF 1200K.
         </p>
         
         <p className="text-sm text-gray-300">
@@ -37,7 +37,7 @@ export function SafetyWarn() {
           3. NEVER EXCEED THE MAXIMUM ALLOWED CHAMBER PRESSURE OF 5000 GPa.
         </p>
         <p className="text-sm text-gray-300">
-          4. NEVER EXCEED THE MAXIMUM ALLOWED CHEESE VELOCITY OF 10000 M/S.
+          4. NEVER EXCEED THE MAXIMUM ALLOWED CHEESE VELOCITY OF 10000 m/s.
         </p>
         <br/>
         <p className="text-sm text-gray-300">
