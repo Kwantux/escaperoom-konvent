@@ -36,7 +36,7 @@ export function BrieBlasterPage({ children }: BrieBlasterPageProps) {
         style={{
           boxShadow: '0 0 25px rgba(0, 243, 255, 0.2)',
           borderImage: 'linear-gradient(45deg, rgba(0, 243, 255, 0.3), rgba(188, 19, 254, 0.3)) 1',
-          height: '90vh',
+          height: '92vh',
           padding: '5vh'
         }}
       >
